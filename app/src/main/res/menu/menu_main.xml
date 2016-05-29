@@ -3,8 +3,20 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".activities.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_typographys"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_typographys"
+        android:icon="@drawable/ic_typography_24dp"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_colors"
+        android:orderInCategory="100"
+        android:title="@string/action_colors"
+        android:icon="@drawable/ic_color_palette_24dp"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_close_session"
+        android:orderInCategory="100"
+        android:title="@string/action_close_session"
         app:showAsAction="never"/>
 </menu>

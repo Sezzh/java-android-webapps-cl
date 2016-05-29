@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">sMood</string>
+    <string name="action_settings">Opciones</string>
+    <string name="action_close_session">Salir</string>
+    <string name="action_typographys">Typografías</string>
+    <string name="action_colors">Colores</string>
+</resources>
