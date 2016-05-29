@@ -5,4 +5,9 @@
     <string name="action_close_session">Salir</string>
     <string name="action_typographys">Typografías</string>
     <string name="action_colors">Colores</string>
+
+
+    <!-- Strings for Colors Activity -->
+    <string name="tab_colors_title">Colores</string>
+    <string name="tab_color_palettes_title">Paletas de color</string>
 </resources>
