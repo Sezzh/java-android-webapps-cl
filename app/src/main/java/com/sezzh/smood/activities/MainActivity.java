@@ -13,17 +13,20 @@ import android.view.MenuItem;
 import com.sezzh.smood.R;
 
 public class MainActivity extends AppCompatActivity {
+    private FloatingActionButton mFab;
+    private Toolbar mToolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        this.setSupportActionBar(toolbar);
-        FloatingActionButton fab =
+        this.mToolbar = (Toolbar) this.findViewById(R.id.toolbar);
+        this.setSupportActionBar(this.mToolbar);
+        this.mFab =
                 (FloatingActionButton) this.findViewById(R.id.fab);
-        assert fab != null;
-        fab.setOnClickListener(new View.OnClickListener() {
+        assert this.mFab != null;
+        this.mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(

@@ -21,38 +21,38 @@ import java.util.List;
 
 public class ColorsActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private FloatingActionButton fab;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
+    private Toolbar mToolbar;
+    private FloatingActionButton mFab;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_colors);
-        this.toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        assert toolbar != null;
-        this.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
-        this.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        this.mToolbar = (Toolbar) this.findViewById(R.id.toolbar);
+        assert mToolbar != null;
+        this.mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
+        this.mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        this.setSupportActionBar(this.toolbar);
-        this.viewPager = (ViewPager) this.findViewById(R.id.viewpager);
+        this.setSupportActionBar(this.mToolbar);
+        this.mViewPager = (ViewPager) this.findViewById(R.id.viewpager);
         this.setupViewPager();
-        this.tabLayout = (TabLayout) this.findViewById(R.id.tabs);
-        assert this.tabLayout != null;
-        this.tabLayout.setupWithViewPager(this.viewPager);
-        this.fab = (FloatingActionButton) this.findViewById(R.id.fab);
-        this.fab.setOnClickListener(new View.OnClickListener() {
+        this.mTabLayout = (TabLayout) this.findViewById(R.id.tabs);
+        assert this.mTabLayout != null;
+        this.mTabLayout.setupWithViewPager(this.mViewPager);
+        this.mFab = (FloatingActionButton) this.findViewById(R.id.fab);
+        this.mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("ColorsActivity", "" + viewPager
+                Log.d("ColorsActivity", "" + mViewPager
                         .getAdapter()
-                        .getPageTitle(viewPager.getCurrentItem()));
+                        .getPageTitle(mViewPager.getCurrentItem()));
 
             }
         });
@@ -60,18 +60,18 @@ public class ColorsActivity extends AppCompatActivity {
     }
 
     private void setupViewPager() {
-        ViewPagerAdapter adapter =
+        ViewPagerAdapter mAdapter =
                 new ViewPagerAdapter(this.getSupportFragmentManager());
-        adapter.addFragment(
+        mAdapter.addFragment(
                 new ColorListFragment(),
                 this.getResources().getString(R.string.tab_colors_title)
         );
-        adapter.addFragment(
+        mAdapter.addFragment(
                 new ColorListFragment(),
                 this.getResources()
                         .getString(R.string.tab_color_palettes_title)
         );
-        this.viewPager.setAdapter(adapter);
+        this.mViewPager.setAdapter(mAdapter);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
