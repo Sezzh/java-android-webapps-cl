@@ -10,4 +10,12 @@
     <!-- Strings for Colors Activity -->
     <string name="tab_colors_title">Colores</string>
     <string name="tab_color_palettes_title">Paletas de color</string>
+
+    <!-- Strings for ColorDetailFragment  -->
+    <string name="color_detail_fragment_color_name">Nombre</string>
+    <string name="color_detail_fragment_color_r">R</string>
+    <string name="color_detail_fragment_color_g">G</string>
+    <string name="color_detail_fragment_color_b">B</string>
+    <string name="color_detail_fragment_color_opacity">Transparencia</string>
+    <string name="color_detail_fragment_color_hexa">#Hex</string>
 </resources>

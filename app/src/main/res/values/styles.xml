@@ -18,4 +18,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="ColorDetail">
+        <item name="android:layout_marginTop">3.5dp</item>
+        <item name="android:layout_marginBottom">3.5dp</item>
+    </style>
+
 </resources>

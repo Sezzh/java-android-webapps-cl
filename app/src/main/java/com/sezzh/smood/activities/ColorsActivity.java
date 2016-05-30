@@ -1,5 +1,6 @@
 package com.sezzh.smood.activities;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class ColorsActivity extends AppCompatActivity {
 
+    private final Integer COLOR_LIST_FRAGMENT_POSITION = 0;
     private Toolbar mToolbar;
     private FloatingActionButton mFab;
     private ViewPager mViewPager;
@@ -51,10 +53,10 @@ public class ColorsActivity extends AppCompatActivity {
         this.mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("ColorsActivity", "" + mViewPager
-                        .getAdapter()
-                        .getPageTitle(mViewPager.getCurrentItem()));
-
+                if (mViewPager.getCurrentItem() ==
+                        COLOR_LIST_FRAGMENT_POSITION ) {
+                    handleNewColorActivity();
+                }
             }
         });
 
@@ -73,6 +75,11 @@ public class ColorsActivity extends AppCompatActivity {
                         .getString(R.string.tab_color_palettes_title)
         );
         this.mViewPager.setAdapter(mAdapter);
+    }
+
+    private void handleNewColorActivity() {
+        Intent intent = new Intent(this, ColorActivity.class);
+        this.startActivity(intent);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.sezzh.smood">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -21,10 +21,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:parentActivityName=".activities.MainActivity"
             android:name=".activities.ColorsActivity"
+            android:label="sMood"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activities.ColorActivity"
+            android:parentActivityName=".activities.ColorsActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:label="sMood">
+            android:label="">
         </activity>
     </application>
 

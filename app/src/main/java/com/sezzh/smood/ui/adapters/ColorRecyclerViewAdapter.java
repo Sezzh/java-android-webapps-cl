@@ -55,6 +55,7 @@ public class ColorRecyclerViewAdapter extends
     }
 
     public void setData(List<ColorModel> data) {
+        this.colorList.clear();
         this.colorList.addAll(data);
         this.notifyDataSetChanged();
     }
