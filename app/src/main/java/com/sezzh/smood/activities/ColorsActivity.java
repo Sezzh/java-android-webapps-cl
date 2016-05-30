@@ -13,7 +13,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.sezzh.smood.R;
-import com.sezzh.smood.ui.ColorListFragment;
+import com.sezzh.smood.ui.fragments.ColorListFragment;
+import com.sezzh.smood.ui.ColorPaletteListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class ColorsActivity extends AppCompatActivity {
                 this.getResources().getString(R.string.tab_colors_title)
         );
         mAdapter.addFragment(
-                new ColorListFragment(),
+                new ColorPaletteListFragment(),
                 this.getResources()
                         .getString(R.string.tab_color_palettes_title)
         );
