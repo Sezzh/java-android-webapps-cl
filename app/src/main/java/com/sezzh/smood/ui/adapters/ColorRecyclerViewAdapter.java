@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sezzh.smood.R;
-import com.sezzh.smood.io.models.ColorExample;
+import com.sezzh.smood.io.models.ColorModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,10 +19,10 @@ import java.util.List;
  */
 public class ColorRecyclerViewAdapter extends
         RecyclerView.Adapter<ColorRecyclerViewAdapter.ColorViewHolder> {
-    public List<ColorExample> colorList;
+    public List<ColorModel> colorList;
 
-    public ColorRecyclerViewAdapter(List<ColorExample> colorList) {
-        this.colorList = colorList;
+    public ColorRecyclerViewAdapter() {
+        this.colorList = new ArrayList<>();
     }
 
     @Override
@@ -37,9 +38,10 @@ public class ColorRecyclerViewAdapter extends
     @Override
     public void onBindViewHolder(ColorViewHolder holder, int position) {
         holder.cardView.setCardBackgroundColor(
-                Color.parseColor(this.colorList.get(position).hexa)
+                Color.parseColor("#" + this.colorList.get(position).getHexa())
         );
-        holder.textView.setText(this.colorList.get(position).name);
+        holder.textView.setText(this.colorList.get(position).getName());
+        holder.url = colorList.get(position).getUrl();
     }
 
     @Override
@@ -52,9 +54,15 @@ public class ColorRecyclerViewAdapter extends
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+    public void setData(List<ColorModel> data) {
+        this.colorList.addAll(data);
+        this.notifyDataSetChanged();
+    }
+
     class ColorViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
         public TextView textView;
+        public String url;
 
         public ColorViewHolder(View itemView) {
             super(itemView);

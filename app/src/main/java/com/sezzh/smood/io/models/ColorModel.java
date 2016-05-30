@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by sezzh on 29/05/16.
  */
-public class Color {
+public class ColorModel {
     private String url;
     private String hexa;
     private Float opacity;
@@ -13,7 +13,7 @@ public class Color {
     private String name;
     private ArrayList<String> user_id = new ArrayList<String>();
 
-    public Color(String hexa, Float opacity, String rgb, String name,
+    public ColorModel(String hexa, Float opacity, String rgb, String name,
                       ArrayList<String> user_id) {
         this.hexa = hexa;
         this.opacity = opacity;

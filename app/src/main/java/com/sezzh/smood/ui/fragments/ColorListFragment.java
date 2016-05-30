@@ -6,17 +6,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.sezzh.smood.R;
 import com.sezzh.smood.io.api.ServiceGenerator;
-import com.sezzh.smood.io.models.ColorExample;
+import com.sezzh.smood.io.api.SmoodClient;
+import com.sezzh.smood.io.models.ColorModel;
 import com.sezzh.smood.ui.adapters.ColorRecyclerViewAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +32,7 @@ public class ColorListFragment extends Fragment {
     private final Integer GRID_COLUMNS = 3;
     private RecyclerView mRecyclerView;
     private ColorRecyclerViewAdapter mAdapter;
-    //private RecyclerView.LayoutManager mLayoutManager;
+    private SmoodClient smoodClient;
 
 
     public ColorListFragment() {
@@ -37,6 +42,8 @@ public class ColorListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.smoodClient =
+                ServiceGenerator.createService(SmoodClient.class);
 
     }
 
@@ -59,30 +66,30 @@ public class ColorListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        this.smoodClient
+                .getResourceColors().enqueue(new Callback<List<ColorModel>>() {
+            @Override
+            public void onResponse(Call<List<ColorModel>> call,
+                                   Response<List<ColorModel>> response) {
+                if (response.isSuccessful()) {
+                    mAdapter.setData(response.body());
+                } else {
+                    Log.d("ColorListFragment", "error en la llamada");
+                }
+            }
 
+            @Override
+            public void onFailure(Call<List<ColorModel>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void setupRecyclerView() {
-        // TODO: set call to api here
-        List<ColorExample> list = new ArrayList<ColorExample>();
-
-        list.add(new ColorExample("Chelsea Blue", "#FF1265"));
-        list.add(new ColorExample("another", "#561276"));
-        list.add(new ColorExample("Real madrid", "#005421"));
-        list.add(new ColorExample("bebicolor", "#FF6432"));
-        list.add(new ColorExample("sezhcolor", "#667711"));
-        list.add(new ColorExample("sdsasd", "#546242"));
-        list.add(new ColorExample("dfdfdf", "#516272"));
-        list.add(new ColorExample("sezhcocxcxlor", "#122333"));
-        list.add(new ColorExample("yhghfgh", "#987543"));
-        list.add(new ColorExample("ghfhgbv", "#553377"));
-        list.add(new ColorExample("dfdfsfdf", "#543790"));
-        list.add(new ColorExample("xcvcvcv", "#444444"));
-
         this.mRecyclerView.setLayoutManager(
                 new GridLayoutManager(this.getActivity(), this.GRID_COLUMNS)
         );
-        this.mAdapter = new ColorRecyclerViewAdapter(list);
+        this.mAdapter = new ColorRecyclerViewAdapter();
         this.mRecyclerView.setAdapter(this.mAdapter);
     }
 
